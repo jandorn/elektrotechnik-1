@@ -1,0 +1,14 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.9, transform shape, voltage shift = 0.5]
+\large
+\draw (0,0) to[vsource, v<=$U_0$] (0,3) to[short,-o] (1,3);
+\draw [very thick](1.03,3) -- +(30:0.66);
+\node [] at (1.4,3.7) {\text{\small\textbf{Laden}}};
+\draw (1.7,3) to[short,o-] (2.6,3) to[short,*-,i=$I$] (5,3);
+\draw (2.6,3) to[short,-o] (2.6,2);
+\draw [very thick](2.6,1.97) -- +(-60:0.66);
+\node [] at (1.8,1.7) {\text{\small\textbf{Entladen}}};
+\draw (2.6,1.3) to[short,o-] (2.6,0);
+\draw (5,3) -- (5,2.6) to[R,l=$R$] (5,1.5) to[C,l=$C$,v=$U_C$] (5,0);
+\draw (0,0) to[short,-*] (2.6,0) -- (5,0);
+\end{circuitikz}

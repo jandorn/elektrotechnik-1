@@ -1,0 +1,6 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.6, transform shape, voltage shift = 0.5]
+\Large
+\draw (0,3) to[short,-*,i=$I_0$] (2,3) to[R,l_=$R_1$,i>_=$I_1$] (2,0) -- (0,0);
+\draw (2,3) -- (4,3) to[R,l_=$R_2$,i>_=$I_2$] (4,0) to[short,-*] (2,0);
+\end{circuitikz}

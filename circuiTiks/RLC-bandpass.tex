@@ -1,0 +1,11 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.7, transform shape, voltage shift = 0.5]
+\large
+\draw (0,2) to[short,o-] (0.5,2) to[R,l=$R$] (3,2) to[short,-o] (6,2);
+\draw (3,2) to[short,*-] (3,1.8) to[L,l=$L$] (3,0.2) to[short,-*] (3,0);
+\draw (4.2,2) to[short,*-] (4.2,1.8) to[C,l=$C$] (4.2,0.2) to[short,-*] (4.2,0);
+\draw (0,0) to[short,o-] (2.5,0) to[short,-o] (6,0);
+\draw (0,2) to[open,v=$U_E$] (0,0);
+\draw (6,2) to[open,v=$U_A$] (6,0);
+\node[] at (2.5,-1) {\text{\textbf{RLC - Bandpass}}};
+\end{circuitikz}

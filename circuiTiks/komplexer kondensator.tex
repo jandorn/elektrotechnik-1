@@ -1,0 +1,48 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.87, transform shape, voltage shift = 0.5]
+\large
+\definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{asparagus}{rgb}{0.53, 0.66, 0.42}
+%Schaltung
+\node[] at (1.2,1.8) {\Large \text{\textbf{Kondensator}}};
+\draw (0,-1) to[vsourcesin, v<=$\underline{\hat{U}} \cdot e^{j\omega t}$] (0,1) -- (2.5,1) to[C,l=$C$,i=$I$] (2.5,-1) -- (0,-1);
+\node[] at (1.5,-1.7) {\Large $I_C = C\frac{dU}{dt} = j\omega C \cdot \underline{\hat{U}}e^{j\omega t}$};
+
+%Zeigerdiagramm
+\draw[->] (4,0) -- (8,0) node[right] {$x$};
+\draw[->] (6,-2) -- (6,2) node[above]{$y$};
+\draw[ceruleanblue] (6,0) circle (1.7);
+\draw[asparagus] (6,0) circle (1);
+\draw[-Latex,ultra thick,ceruleanblue] (6,0) -- (7.7,0);
+\draw[-Latex,ultra thick,asparagus] (6,0) -- (6,1);
+\draw[-latex] (6.7,0) arc (0:80:0.7);
+\node[] at (6.35,0.2) {\small $90^{\circ}$};
+
+%Graph
+\draw[->, very thick] (9,0) -- (17.5,0) node[right]{$t$};
+\draw[->, very thick] (9,-2) -- (9,2) node[above]{$\textcolor{ceruleanblue}{U},\textcolor{asparagus}{I}$};
+    %Spannung
+\draw[very thick, ceruleanblue] (9,0) sin (10,1.7);
+\draw[very thick, ceruleanblue] (10,1.7) cos (11,0);
+\draw[very thick, ceruleanblue] (11,0) sin (12,-1.7);
+\draw[very thick, ceruleanblue] (12,-1.7) cos (13,0);
+\draw[very thick, ceruleanblue] (13,0)  sin (14,1.7);
+\draw[very thick, ceruleanblue] (14,1.7) cos (15,0);
+\draw[very thick, ceruleanblue] (15,0) sin (16,-1.7);
+\draw[very thick, ceruleanblue] (16,-1.7) cos (17,0);
+    %Strom
+\draw[very thick, asparagus] (9,1) cos (10,0);
+\draw[very thick, asparagus] (10,0) sin (11,-1);
+\draw[very thick, asparagus] (11,-1) cos (12,0);
+\draw[very thick, asparagus] (12,0)  sin (13,1);
+\draw[very thick, asparagus] (13,1) cos (14,0);
+\draw[very thick, asparagus] (14,0) sin (15,-1);
+\draw[very thick, asparagus] (15,-1) cos (16,0);
+\draw[very thick, asparagus] (16,0) sin (17,1);
+
+\draw[densely dashed, thin] (13,2.1) -- (13,0.5);
+\draw[densely dashed, thin] (14,2.1) -- (14,0.5);
+\draw[latex-latex] (13,2) -- (14,2); 
+\node[] at (13.6,2.3) {\small $90^{\circ}$};
+
+\end{circuitikz}

@@ -1,0 +1,47 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.87, transform shape, voltage shift = 0.5]
+\large
+\definecolor{ceruleanblue}{rgb}{0.16, 0.32, 0.75}
+\definecolor{asparagus}{rgb}{0.53, 0.66, 0.42}
+%Schaltung
+\node[] at (1.2,1.8) {\Large \text{\textbf{Widerstand}}};
+\draw (0,-1) to[vsourcesin, v<=$\underline{\hat{U}} \cdot e^{j\omega t}$] (0,1) -- (2.5,1) to[R,l=$R$,i=$I$] (2.5,-1) -- (0,-1);
+\node[] at (1.5,-1.7) {\Large $I_R = \frac{U}{R} = \frac{\underline{\hat{U}} e^{j\omega t}}{R}$};
+
+%Zeigerdiagramm
+\draw[->] (4,0) -- (8,0) node[right] {$x$};
+\draw[->] (6,-2) -- (6,2) node[above]{$y$};
+\draw[ceruleanblue] (6,0) circle (1.7);
+\draw[asparagus] (6,0) circle (1);
+\draw[-Latex,ultra thick,ceruleanblue] (6,0) -- (7.7,0);
+\draw[-Latex,ultra thick,asparagus] (6,0) -- (7,0);
+\draw[very thin] (6.5,-0.2) -- (7.5,-1.5);
+\node[] at (7.6,-1.7) {\small\text{Strom}};
+\draw[very thin] (7.2,0.2) -- (7.7,1.5);
+\node[] at (7.8,1.7) {\small\text{Spannung}};
+\draw[-latex] (5.6,1.9) arc (95:175:1.65);
+\node[] at (4.5,1.8) {$\omega t$};
+
+%Graph
+\draw[->, very thick] (9,0) -- (17.5,0) node[right]{$t$};
+\draw[->, very thick] (9,-2) -- (9,2) node[above]{$\textcolor{ceruleanblue}{U},\textcolor{asparagus}{I}$};
+    %Spannung
+\draw[very thick, ceruleanblue] (9,0) sin (10,1.7);
+\draw[very thick, ceruleanblue] (10,1.7) cos (11,0);
+\draw[very thick, ceruleanblue] (11,0) sin (12,-1.7);
+\draw[very thick, ceruleanblue] (12,-1.7) cos (13,0);
+\draw[very thick, ceruleanblue] (13,0)  sin (14,1.7);
+\draw[very thick, ceruleanblue] (14,1.7) cos (15,0);
+\draw[very thick, ceruleanblue] (15,0) sin (16,-1.7);
+\draw[very thick, ceruleanblue] (16,-1.7) cos (17,0);
+    %Strom
+\draw[very thick, asparagus] (9,0) sin (10,1);
+\draw[very thick, asparagus] (10,1) cos (11,0);
+\draw[very thick, asparagus] (11,0) sin (12,-1);
+\draw[very thick, asparagus] (12,-1) cos (13,0);
+\draw[very thick, asparagus] (13,0)  sin (14,1);
+\draw[very thick, asparagus] (14,1) cos (15,0);
+\draw[very thick, asparagus] (15,0) sin (16,-1);
+\draw[very thick, asparagus] (16,-1) cos (17,0);
+
+\end{circuitikz}

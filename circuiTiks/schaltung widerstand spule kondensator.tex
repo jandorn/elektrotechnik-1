@@ -1,0 +1,11 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.9, transform shape, voltage shift = 0.5]
+\large
+\draw (0,0) to[vsource, v<=$U_0$] (0,3) to[short,-o] (0.5,3);
+\draw [very thick](0.53,3) -- +(30:0.66);
+\draw (1.2,3) to[short,o-] (1.2,3) to[R,l=$\color{red!50!black}R$] (4,3);
+\draw (4,3) -- (4,2) to[L,l=$\color{green!50!black}L$] (4,1) -- (4,0);
+\draw (4,0) to[C,l=$\color{blue!50!black}C$] (0,0);
+\draw [thick] (3,1.6) arc (0:160:1);
+\draw [thick, ->] (3,1.6) arc (360:200:1);
+\end{circuitikz}

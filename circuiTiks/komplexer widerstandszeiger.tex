@@ -1,0 +1,12 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=1.2, transform shape, voltage shift = 0.5]
+\draw[-Latex] (0,-0.3) -- (0,2) node[above]{\small $Im(\underline{Z})$};
+\draw[-Latex] (-0.3,0) -- (3,0) node[right]{\small $Re(\underline{Z})$};
+\draw[-Latex,very thick] (0,0) -- (2,1.5);
+\draw[-latex, densely dashed, very thick] (0,0) -- (2,0);
+\draw[-latex, densely dashed, very thick] (2,0) -- (2,1.5);
+\node[] at (1,-0.2) {$R$};
+\node[] at (2.4,0.7) {$jX$};
+\node[] at (0.9,1) {$\underline{Z}$};
+\node[] at (5,0.7) {$\underline{Z} = R + jX$};
+\end{circuitikz}

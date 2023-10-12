@@ -1,0 +1,41 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=1, transform shape, voltage shift = 0.5]
+\large
+\draw [->, very thick] (0,-2) -- (0,2) node[above]{$U,I$};
+\draw [->, very thick] (-1,0) -- (8,0) node[right]{$t$};
+%Voltage sine
+\draw[ultra thick, blue] (-0.5,0) sin (0.5,1);
+\draw[ultra thick, blue] (0.5,1) cos (1.5,0);
+\draw[ultra thick, blue] (1.5,0) sin (2.5,-1);
+\draw[ultra thick, blue] (2.5,-1) cos (3.5,0);
+\draw[ultra thick, blue] (3.5,0)  sin (4.5,1);
+\draw[ultra thick, blue] (4.5,1) cos (5.5,0);
+\draw[ultra thick, blue] (5.5,0) sin (6.5,-1);
+\draw[ultra thick, blue] (6.5,-1) cos (7.5,0);
+%Current sine
+\draw[ultra thick, red] (-0.5,-1.7) cos (0.5,0);
+\draw[ultra thick, red] (0.5,0) sin (1.5,1.7);
+\draw[ultra thick, red] (1.5,1.7) cos (2.5,0);
+\draw[ultra thick, red] (2.5,0) sin (3.5,-1.7);
+\draw[ultra thick, red] (3.5,-1.7) cos (4.5,0);
+\draw[ultra thick, red] (4.5,0)  sin (5.5,1.7);
+\draw[ultra thick, red] (5.5,1.7) cos (6.5,0);
+\draw[ultra thick, red] (6.5,0) sin (7.5,-1.7);
+%Zeigerdiagramm
+\draw[->, very thick] (-5,0) -- (-1,0);
+\node[] at (-1,0.3) {$x$};
+\draw[->, very thick] (-3,-2) -- (-3,2) node[above]{$y$};
+\draw[very thick, red] (-3,0) circle (1.7);
+\draw[very thick, blue] (-3,0) circle (1);
+\draw[densely dashed, red] (0,-1.2) -- (-1.8,-1.2);
+\draw[-latex, very thick, red] (-3,0) -- (-1.8,-1.2);
+\node[red] at (-2.3,-1.1) {$\hat{I}$};
+\draw[densely dashed, red] (-3,-1.7) -- (7.5,-1.7);
+\draw[densely dashed, red] (-3,1.7) -- (7.5,1.7);
+\draw[densely dashed, blue] (0,0.75) -- (-2.3,0.75);
+\draw[-latex, very thick, blue] (-3,0) -- (-2.3,0.75);
+\node[blue] at (-2.7, 0.65) {$\hat{U}$};
+\draw[densely dashed, blue] (-3,1) -- (7.5,1);
+\draw[densely dashed, blue] (-3,-1) -- (7.5,-1);
+\node[] at (2,-2.5) {\text{\footnotesize Gemeinsame Darstellung von Strom und Spannung im Zeigerdiagramm}};
+\end{circuitikz}

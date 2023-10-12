@@ -1,0 +1,659 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{german}  
+%%\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[locale=DE]{siunitx}
+\usepackage[official]{eurosym}
+\usepackage[a4paper,left=1cm,right=1.3cm,top=1.5cm,bottom=2cm,bindingoffset=5mm]{geometry}
+\pagenumbering{roman}
+\usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.markings}
+\usepackage[european,straightvoltages]{circuitikz}
+\titleformat*{\section}{\large\bfseries}
+\setlength{\fboxrule}{0.4mm}
+\usepackage{hyperref}
+
+\pgfplotsset{compat=1.17}
+\mdfsetup{skipabove=0pt,skipbelow=0pt,linewidth=0.5mm}
+\hypersetup{colorlinks=true,urlcolor=blue!70!white}
+
+\title{
+    \vspace{-1.5cm}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2.1pt}
+    \rule{\textwidth}{0.4pt}
+    \vspace{0.3\baselineskip}
+    
+    \textbf{Elektrotechnik I für Wirtschaftsingenieure - Zusammenfassung}
+    
+    \vspace{0.75\baselineskip}
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace*{3.2pt}
+    \rule{\textwidth}{1.6pt}
+    }
+\author{J.D.}
+\date{September 2021}
+
+\begin{document}
+\maketitle
+
+
+\section{Grundlegendes}
+\vspace{-0.8\baselineskip}
+\centering
+\fbox{\begin{minipage}{\textwidth}
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Schaltzeichen}}}\\
+\vspace{0.4\baselineskip}
+\begin{tabular}{ccccccc}
+\input{circuiTiks/ideale spannungsquelle.tex} &
+\input{circuiTiks/ideale stromquelle.tex} &
+\raisebox{2\height}{\input{circuiTiks/widerstand.tex}} &
+\raisebox{0.6\height}{\input{circuiTiks/kondensator.tex}} &
+\raisebox{1.6\height}{\input{circuiTiks/spule.tex}} &
+\raisebox{0.2\height}{\input{circuiTiks/masse.tex}} &
+\input{circuiTiks/wechselspannung}\\
+\makecell{ideale\\Spannungsquelle} & \makecell{ideale\\Stromquelle} & Widerstand & Kondensator & Spule & Masse & Wechselspannung
+\end{tabular}
+\end{minipage}}
+\vspace{0.5\baselineskip}
+
+\fbox{\begin{minipage}{\textwidth}
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{elementare Physikalische Größen}}}\\
+\vspace{0.4\baselineskip}
+\begin{tabular}{l|l}
+ \textbf{I} Stromstärke [A] & \textit{`Die Menge des in einer bestimmten Zeit durch einen Leiter fließenden Stroms'}\\
+ \textbf{U} Spannung [V] & \textit{`Die Kraft auf freie Elektronen und Ursache des elektrischen Stroms' }\\
+ \textbf{R} Widerstand [$\Omega$] & \textit{`Die Behinderung des elektrischen Stroms in einem Leiter'}\\
+ \\
+ \textbf{C} Kapazität [F] & \textit{`Fähigkeit eines Kondensators durch ein elektrisches Feld eine Spannung zu erzeugen'}\\
+ \textbf{L} Induktivität [H] & \textit{`Fähigkeit einer Spule durch ein Magnetfeld eine Spannung zu erzeugen'}\\
+ \textbf{P} Leistung [W] & \textit{`Die in einer Zeitspanne umgesetzte Energie'}\\
+ \textbf{G} Leitwert [S] & \textit{`Der Kehrwert des elektrischen Widerstands'}
+\end{tabular}\\
+\vspace{0.5\baselineskip}
+\rule{\textwidth-30pt}{0.5pt}
+\vspace{0.5\baselineskip}\\
+\begin{tabular}{ccc}
+    \fbox{Ohmsches Gesetz \textbf{$R = \frac{U}{I}$}} & \fbox{Elektrische Leistung $P = U \cdot I$} & \fbox{Leitwert $G = \frac{1}{R}$}
+    \end{tabular}
+\vspace{0.2\baselineskip}
+\end{minipage}}
+
+\section{Schaltungsanalyse}
+\vspace{-0.8\baselineskip}
+\fbox{\begin{minipage}{\textwidth}
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Kirchhoffsche Gleichungen}}}\\
+\vspace{0.6\baselineskip}
+\begin{flushleft}
+\vspace{-.3\baselineskip}
+\hspace{.1\baselineskip} 1. Kirchhoffsche Gleichung = \textbf{Knotengleichung}\\
+\hspace{1.7\baselineskip}\raisebox{-0.5\height}{\includegraphics[scale=1.2]{grafiken/knotengleichung.PNG}}
+\hspace{1\baselineskip}${I_1 + I_2 - I_3 - I_4 - I_5 = 0}$\hspace{1\baselineskip}
+\fbox{\begin{minipage}{0.515\textwidth}
+\vspace{1\baselineskip}
+\hspace{0.3\baselineskip}${\sum I_k = 0}$\hspace{1\baselineskip}\begin{tabular}{l}
+     Vorzeichen + für zufließende Ströme\\
+     Vorzeichen $-$ für abfließende Ströme
+\end{tabular}
+\vspace{1\baselineskip}
+\end{minipage}}
+\\
+\hspace{.1\baselineskip} 2. Kirchhoffsche Gleichung = \textbf{Maschengleichung}\\
+\hspace{0.5\baselineskip}\raisebox{-0.5\height}{\input{circuiTiks/masche}}
+\hspace{0.1\baselineskip}${-U_0 + U_1 + U_2 + U_3 = 0}$\hspace{0.9\baselineskip}
+\fbox{\begin{minipage}{0.515\textwidth}
+\vspace{1\baselineskip}
+\hspace{0.3\baselineskip}${\sum U_M = 0}$\hspace{1\baselineskip}\begin{tabular}{l}
+     Vorzeichen + wenn U in Umlaufrichting\\
+     Vorzeichen $-$ wenn U gegen Umlaufrichtung
+\end{tabular}
+\vspace{1\baselineskip}
+\end{minipage}}
+\end{flushleft}
+\end{minipage}}
+\vspace{0.5\baselineskip}
+
+\begin{mdframed}
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Reihen- und Parallelschaltung}}}\\
+\vspace{0.6\baselineskip}
+\begin{minipage}{0.25\textwidth}
+\vspace{0.5\baselineskip}
+\centering{Reihenschaltung}
+\vspace{0.2\baselineskip}
+\rule{\textwidth-30pt}{0.5pt}
+\begin{align*}
+R_{ges} &= R_1 + R_2 \\
+I_0 &= I_1 = I_2 \\
+U_0 &= U_1 + U_2
+\end{align*}
+\end{minipage}
+\raisebox{-0.5\height}{\input{circuiTiks/reihenschaltung}}
+\hspace{0.2\baselineskip}
+\vrule
+\hspace{0.2\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/parallelschaltung}}
+\begin{minipage}{0.25\textwidth}
+\vspace{0.5\baselineskip}
+\centering{Parallelschaltung}
+\vspace{0.2\baselineskip}
+\rule{\textwidth-30pt}{0.5pt}
+\begin{align*}
+R_{ges} &= \frac{R_1 \cdot R_2}{R_1 + R_2} \\
+I_0 &= I_1 + I_2 \\
+U_0 &= U_1 = U_2
+\end{align*}
+\vspace{0\baselineskip}\\
+Für mehr als zwei parallele Widerstände:
+\[\frac{1}{R_{ges}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n}\]
+\hspace{0.2\baselineskip}
+\end{minipage}\\
+\vspace{0.8\baselineskip}
+%Box für Spannungsteiler und Stromteiler
+\fbox{\begin{minipage}{0.475\textwidth}
+\vspace{0.3\baselineskip}
+\begin{center}\fbox{Spannungsteiler}\end{center}
+\raisebox{-0.5\height}{\input{circuiTiks/spannungsteiler}}
+\hspace{0.8\baselineskip}
+\scalebox{0.92}{\begin{minipage}{0.3\textwidth}\[\frac{U_2}{U_1} = \frac{R_2 \cdot I}{(R_1 + R_2) \cdot I} = \frac{R_2}{R_1 + R_2}\]\end{minipage}}\\
+\scalebox{0.98}{\begin{minipage}{\textwidth}\[\small\frac{\text{Teilspannung}}{\text{Gesamtspannung}} = \frac{\text{Widerstand unter Teilspannungsabfall}}{\text{Gesamtwiderstand}}\]\end{minipage}}
+\end{minipage}}%
+\hspace{0.1\baselineskip}
+\fbox{\begin{minipage}{0.475\textwidth}
+\vspace{0.3\baselineskip}
+\begin{center}\fbox{Stromteiler}\end{center}
+\hspace{1.2\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/stromteiler}}
+\hspace{1\baselineskip}
+\begin{minipage}{0.3\textwidth}\[\frac{I_1}{I_0} = \frac{R_1||R_2}{R_1} = \frac{R_2}{R_1 + R_2}\]\end{minipage}
+\vspace{0.7\baselineskip}\\
+\vspace{0.1\baselineskip}
+\scalebox{0.96}{\begin{minipage}{\textwidth}\[\small\frac{\text{Teilstrom}}{\text{Gesamtstrom}} = \frac{\text{Gesamtwiderstand}}{\text{Vom Teilstrom durchflossener Widerstand}}\]\end{minipage}}
+\end{minipage}}
+
+\vspace{0.5\baselineskip}
+\rule{0.6\textwidth}{0.5pt}
+\begin{minipage}{0.8\textwidth}
+\vspace{0.5\baselineskip}
+\textit{\small\ Das Verhalten von Strom und Spannung sowie das Rechnen mit Widerständen in Reihen- und Parallelschaltungen sind essenziell für ein gutes, intuitives Verständis einer Schaltung! Auch die Spannungs- und Stromteiler-Regel ist so wichtig, dass man sie jederzeit griffbereit haben sollte.}
+\end{minipage}
+\vspace{0.3\baselineskip}
+\end{mdframed}
+\vspace{0.8\baselineskip}
+
+\begin{mdframed}
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Spannungsquelle und Stromquelle}}}
+\justify
+Eine \textit{ideale} Spannungsquelle, welche immer eine konstante Spannung beibehält, müsste bei kurzschließen einen unendlich großen Strom erzeugen, was natürlich nicht realistisch ist. Eine \textit{reale} Spannungsquelle ähnelt daher einer Spannungsquelle mit in Serie geschaltetem Innenwiderstand $R_i$. Das Gleiche passiert bei der Stromquelle, nur wird hier der Innenwiderstand parallel geschaltet.
+\par\centering
+\vspace{0.6\baselineskip}
+\begin{tabular}{ccccc}
+    \raisebox{-0.5\height}{\input{circuiTiks/ideale spannungsquelle}} & \raisebox{-0.5\height}{\input{circuiTiks/reale spannungsquelle}} &
+    \begin{minipage}{1.5cm}\hspace{1.5cm}\end{minipage}&
+    \raisebox{-0.5\height}{\input{circuiTiks/ideale stromquelle}} & 
+    \raisebox{-0.5\height}{\input{circuiTiks/reale stromquelle}}\\\\
+    ideale Spannungsquelle & reale Spannungsquelle & & ideale Stromquelle & reale Stromquelle
+\end{tabular}\\
+\vspace{0.5\baselineskip}
+\rule{0.6\textwidth}{0.5pt}\\
+\vspace{0.5\baselineskip}
+Eine \textbf{Transformation} von realer Spannungsquelle zu realer Stromquelle und vice versa ist simpel:
+\begin{minipage}{0.8\textwidth}
+\vspace{1\baselineskip}
+\centering\raisebox{-0.5\height}{\input{circuiTiks/transformation quellen}}
+\end{minipage}\\
+\vspace{0.5\baselineskip}
+\rule{0.6\textwidth}{0.5pt}\\
+\vspace{0.5\baselineskip}
+Es werden oft zwei \textbf{Grenzfälle} beim Betrieb von Quellen beobachtet:
+\vspace{1\baselineskip}
+
+\begin{tabular}{c|c|c|c}
+      & \makecell{\textbf{Leerlauf}\\$R_{Last} = \infty$} & \makecell{\textbf{Kurzschluss}\\$R_{Last} = 0$} & Kennlinie \\\hline
+     \makecell{\textbf{Spannungsquelle}\\\\\raisebox{-0.5\height}{\input{circuiTiks/reale spannungsquelle mit last}}\\\\} & \makecell{$U_{Last} = U_L$\\$I_{Last} = 0$} & \makecell{$U_{Last} = 0$\\$I_{Last} = I_k = \frac{U_L}{R_i}$} &\makecell{\raisebox{-0.5\height}{\input{circuiTiks/kennlinie spannungsquelle}}\\$U_{Last} = U_L - I_{Last} \cdot R_i$} \\\cline{2-4}
+     \makecell{\textbf{Stormquelle}\\\\\raisebox{-0.5\height}{\input{circuiTiks/reale stromquelle mit last}}} & \makecell{$U_{Last} = I_k \cdot R_i$\\$I_{Last} = 0$} & \makecell{$U_{Last} = 0$\\$I_{Last} = I_k = \frac{U_L}{R_i}$} &\makecell{\raisebox{-0.5\height}{\input{circuiTiks/kennlinie stromquelle}}\\$I_{Last} = I_k - \frac{U_{Last}}{R_i}$}\\\hline
+\end{tabular}
+\[\text{Innenwiderstand } R_i = \frac{U_L}{I_k} = \frac{\text{Leerlaufspannung}}{\text{Kurzschlussstrom}}\]\\
+\end{mdframed}
+
+\flushleft
+\section{Kondensator}
+\vspace{-0.8\baselineskip}
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Definition}}}\\
+\vspace{0.5\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/kondensator}}
+\justify
+Der \textbf{Kondensator} ist ein elektrisches Bauelement zum kurzzeitigen Speichern elektrischer Ladung in Form eines elektrischen Feldes. Er besteht aus zwei elektrischen Leitern, die durch ein Dielektrikum (Isolator) voneinander getrennt sind. Einfachste Bauform ist der Plattenkondensator mit zwei parallelen Metallplatten und Luft als Dielektrikum.
+\par\centering
+\raisebox{-0.5\height}{\input{circuiTiks/kondensator mit dielektrikum}}
+\raisebox{-0.5\height}{\input{circuiTiks/kondensator schaubild}}
+\justify
+Bei angelegter Spannung herrscht oben ein Elektronendefizit während sich unten die Elektronen häufen. Zwischen den Platten entsteht ein elektrisches Feld. Der Kondensator ist `geladen'. Da die Platten elektrisch nicht miteinander verbunden sind, kann im geladenen Zustand kein Strom fließen. Falls die Spannungsquelle entfernt wird, bleibt die Ladung am Kondensator und damit die Spannung (kurzfristig) erhalten. Sobald der Stromkreis geschlossen wird, beispielsweise durchs anschließen einer LED, fließt Strom und der Kondensator wird `entladen'.
+\[\text{Kapazität } C = \frac{Q}{U} \hspace{2cm} \text{für Plattenkondensatoren } C = \varepsilon_0\varepsilon_r\frac{A}{d}\]
+\[\text{Elektrische Feldstärke } E = \frac{U}{d}\]
+\[\text{Elektrische Energie } W = \frac{1}{2}CU^2\]
+\end{mdframed}
+\vspace{0.7\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\fbox{\textbf{Reihen- und Parallelschaltung}}\\
+\vspace{0.5\baselineskip}
+\begin{tabular}{cc}
+    &\\
+    \makecell{\raisebox{-0.25\height}{\input{circuiTiks/reihenschaltung kondensator.tex}} \hspace{0.7\baselineskip} \scalebox{1.3}{$\frac{1}{C} = \frac{1}{C_1} + \frac{1}{C_3} + \frac{1}{C_3}$}} & \makecell{\raisebox{-0.4\height}{\input{circuiTiks/parallelschaltung kondensator}} \hspace{0.7\baselineskip} $C = C_1 + C_2 + C_3$} \\
+    &\\
+    Reihenschaltung & Parallelschaltung \\
+\end{tabular}
+\end{mdframed}
+\vspace{0.7\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\fbox{\textbf{Ladevorgänge}}\\
+\vspace{0.5\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/kondensatorladevorgang schaltung.tex}}\\
+\vspace{1\baselineskip}
+\begin{mdframed}[linewidth=0.4mm]
+\flushleft\textbf{\large Kennlinie}\\
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/kondensatorladevorgang kennlinie}} 
+\begin{minipage}{0.4\textwidth}
+Beim Ladevorgang fließt temporär Strom, bis sich die Spannung am Kondensator eingestellt hat, die auch an der Spannungsquelle anliegt. Beim Entladen fließt wieder Strom, nur in entgegengesetzter Richtung, bis der Kondensator entladen ist und die Spannung Null beträgt.\\ Das allgemeine Zeitverhalten von Spannung und Strom eines Kondensators in Abhängigkeit der jeweils anderen Größe ergibt sich durch:\\ \begin{mdframed}[linewidth=0.7mm]
+\vspace{-0.8\baselineskip}
+\begin{align*}
+u_C(t) &= \frac{1}{C} \int i(t)\,dt \\
+i_C(t) &= C \frac{du(t)}{dt}
+\end{align*}
+\end{mdframed}
+\vspace{0.4\baselineskip}
+\end{minipage}
+\end{mdframed}
+\vspace{0.5\baselineskip}
+\end{mdframed}
+
+\flushleft
+\section{Spule}
+\vspace{-0.8\baselineskip}
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Definition}}}\\
+\vspace{0.5\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/spule.tex}}\\
+\justify
+Die \textbf{Spule} ist ein elektrisches Bauelement, dem ein langer dünner Leiter spiralförmig um einen meist zylindrischen Körper gewickelt wird. Beim Kondensator haben wir gesehen, dass elektrische Energie in einem elektrischen Feld gespeichert wird. Bei der Spule wird diese Energie in einem Magnetfeld gespeichert.\\
+\par\centering
+\raisebox{-0.5\height}{\input{circuiTiks/magnetfeld leiter.tex}}
+\hspace{2\baselineskip}
+\raisebox{-0.5\height}{\includegraphics[scale=0.32]{grafiken/spule magnetfeld.PNG}}
+\justify
+Ein durch ein Leiter fließender Strom erzeugt ein kreisrundes Magnetfeld um den Leiter (die Richtung kann man mit der Rechten-Hand-Regel bestimmen; Daumen: Fließrichtung Elektronen, Finger: Kreisrichtung). Die Bauart einer einfachen Spule erlaubt ein annähernd homogenes Magnetfeld in Längsrichtung der Spule. Oft befindet sich im inneren ein Eisenkern um das Magnetfeld zusätzlich zu verstärken.\\
+Die \textbf{Induktivität} ist die Fähigkeit einer Spule durch das Magnetfeld eine Spannung zu erzeugen.\\
+Eine gängige Analogie zum verstehen, was in einer Spule im Stromkreis passiert ist die des \href{https://www.youtube.com/watch?v=KSylo01n5FY}{\textit{Wasserrads}}.
+\[\text{Magnetischer Fluss } \Phi = \int B \, dA = L \cdot I \hspace{2cm} \text{Durchflutungsgesetz }I = \oint_s H \, ds\]
+\[\text{Magnetische Energie } W = \frac{1}{2}LI^2\]
+\end{mdframed}
+\vspace{0.8\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Reihen- und Parallelschaltung}}}\\
+\vspace{0.5\baselineskip}
+\begin{tabular}{cc}
+    &\\
+    \makecell{\raisebox{-0.15\height}{\input{circuiTiks/reihenschaltung spule.tex}} \hspace{0.7\baselineskip} $L = L_1 + L_2 + L_3$} & \makecell{\raisebox{-0.4\height}{\input{circuiTiks/parallelschaltung spule}} \hspace{0.7\baselineskip} \scalebox{1.3}{$\frac{1}{L} = \frac{1}{L_1} + \frac{1}{L_3} + \frac{1}{L_3}$}} \\
+    &\\
+    Reihenschaltung & Parallelschaltung \\
+\end{tabular}
+\end{mdframed}
+\vspace{0.7\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\fbox{\textbf{Ladevorgänge}}\\
+\vspace{0.5\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/spuleladevorgang schaltung.tex}}\\
+\vspace{1\baselineskip}
+\begin{mdframed}[linewidth=0.4mm]
+\flushleft\textbf{\large Kennlinie}\\
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/spuleladevorgang kennlinie}}
+\begin{minipage}{0.4\textwidth}
+Wenn der `Laden'-Schalter geschlossen wird entsteht abrupt eine selbstinduzierte Spannung an der Spule, was zu einem Anstieg am Stromfluss führt. In der Spule entsteht nun ein Magnetfeld. Im stationären Zustand, also falls der Stromfluss gleich bleibt, fließt der Strom durch die Spule als wäre es ein simpler Draht. Beim `Entladen' wird die im Magnetfeld gespeicherte Energie in elektrische Energie zurückgewandelt und es fließt wieder kurzfristig Strom bis die Spannung, also das Magnetfeld, sich abgebaut hat.\\ Das Zeitverhalten von Spannung und Strom ergibt sich durch:\\ 
+\begin{mdframed}[linewidth=0.7mm]
+\vspace{-0.8\baselineskip}
+\begin{align*}
+u_L(t) &= L\frac{di(t)}{dt} \\
+i_L(t) &= \frac{1}{L}\int u(t)\,dt
+\end{align*}
+\end{mdframed}
+\end{minipage}
+\end{mdframed}
+\vspace{0.6\baselineskip}
+\end{mdframed}
+\vspace{0.7\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\fbox{\textbf{Transformator}}\\
+\vspace{0.5\baselineskip}
+\justify
+Ein Transformator ist ein elektrisches Bauteil, welches eine Eingangswechselspannung in eine höhere oder eine niedrigere Ausgangswechselspannung umwandeln kann. Ein typischer Trafo besteht aus zwei oder mehreren isolierten Kupferdrähten, die auf einem gemeinsamen Magnetkern aufgewickelt werden.
+\justify
+\centering
+\vspace{0.5\baselineskip}
+\raisebox{-0.5\height}{\includegraphics[scale=0.5]{grafiken/transformator schaubild.png}}
+\hspace{1\baselineskip}
+\begin{minipage}{0.3\linewidth}
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/transformator}}\\
+\vspace{0.6\baselineskip}
+\textit{Europäisches Schaltsymbol eines Transformators mit Eisenkern.}
+\end{minipage}\\
+\vspace{0.5\baselineskip}
+\justify
+Eine Wechselspannung auf der Primärseite des Transformators bewirkt einen wechselnden magnetischen Fluss im Kern. Dieser wechselnder Fluss induziert auf der Sekundärseite des Transformators eine Wechselspannung. Ob eine höhere oder niedrigere Spannung auf der Sekundärseite erzeugt wird, kann durch das Verhältnis der Windungen der Primärseite zur Sekundärseite festgelegt werden. Eine Faustregel: An der Seite mit mehr Windungen liegt eine größere Spannung an.
+\justify
+\centering
+\begin{tabular}{cc}
+     \begin{minipage}{0.25\textwidth}\vspace{0.35cm} Spannungsübersetzung \vspace{0.35cm}\end{minipage} & $\displaystyle \frac{U_2}{U_1} = \frac{n_2}{n_1}$ \\ 
+     \begin{minipage}{0.25\textwidth}\vspace{0.35cm} Stromübersetzung \vspace{0.35cm}\end{minipage} & $\displaystyle \frac{I_2}{I_1} = \frac{U_1}{U_2} = \frac{n_1}{n_2}$ \\ 
+     \begin{minipage}{0.25\textwidth}\vspace{0.35cm} Widerstandsübersetzung \vspace{0.35cm}\end{minipage} & $\displaystyle \frac{R_1}{R_2} = (\frac{n_1}{n_2})^2$ 
+\end{tabular}
+\end{mdframed}
+
+\flushleft
+\section{Wechselstrom / Wechselspannung}
+\vspace{-0.8\baselineskip}
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Einführung}}}\\
+\vspace{0.5\baselineskip}
+\justify
+Da die Wechselstromlehre in dem Kurs gefühlt etwas schwamming besprochen wurde, will ich dieses Thema etwas ausführlicher angehen. Das heißt, dass ich versuchen werde zu zeigen, auf was für Probleme man schnell stößt, versucht man mit den herkömmlichen Methoden zu arbeiten. Des weiteren will ich die Idee der komplexen Impedanzen ein wenig herleiten, sodass da ein bisschen Verständnis aufgebaut werden kann.
+\justify
+\centering
+\rule{0.6\textwidth}{0.5pt}\\
+\justify
+\indent Wir wollen nun von Gleichstrom zu Wechselstrom umschalten. Betrachtet werden jetzt die sinusförmigen, reinen Wechselgrößen. Das heißt, dass sich alle Spannungen und Ströme durch folgende Gleichungen beschreiben lassen:
+\[u(t) = \hat{U} \cdot sin(\omega t + \varphi_U)\]
+\[i(t) = \hat{I} \cdot sin(\omega t + \varphi_I)\]
+mit:
+\begin{align*}
+    u(t),i(t) &= \text{zeitabhängige Spannung bzw. Strom}\\
+    \hat{U},\hat{I} &= \text{Amplitude von Spannung bzw. Strom}\\
+    \omega &= \text{Kreisfrequenz}\\
+    \varphi_U,\varphi_I &= \text{Phase von Spannung bzw. Strom zum Zeitpunkt t = 0}
+\end{align*}
+\flushleft Die Größen können in folgender Abbildung dargestellt werden:\\
+\vspace{1\baselineskip}
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/wechselspannung abbildung}}
+\vspace{1\baselineskip}
+\justify
+Die Spannungsamplitude $\hat{U}$ und die Phase $\varphi_U$ können wir unmittelbar aus dem Bild ablesen. Für die Kreisfrequenz gilt:
+\begin{align*}
+    T &= \text{ Periodendauer}\\
+    f &= \frac{1}{T} \text{ Frequenz}\\
+    \omega &= 2\pi f \text{ Kreisfrequenz}
+\end{align*}
+\flushleft Eine Darstellung im Zeigerdiagramm ist anschaulich und sinnvoll:\\
+\centering
+\vspace{1\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/wechselspannung und strom im zeigerdiagramm}}\\
+\vspace{1\baselineskip}
+\justify
+In der Regel werden zeitabhängige Größen mit Kleinbuchstaben bezeichnet und zeitunhabhängige Größen mit Großbuchstaben. Die Länge des Zeigers entspricht der Amplitude und wird bei der Spannung in Volt gemessen und beim Strom in Ampere. Zum Zeitpunkt t = 0 hat der Zeiger den Winkel $\varphi_U$ und $\varphi_I$ mit der x-Achse (in der Regel in Bogenmaß). Der Zeiger dreht sich mit der Kreisfrequenz $\omega$ herum. Die Momentanwerte der Spannung $u(t)$ und des Stroms $i(t)$ erhält man jederzeit durch Projektion auf die y-Achse. \\
+\justify
+\vspace{2\baselineskip}
+\centering{\fbox{\textbf{Modellieren komplexer Schaltungen}}}\\
+\vspace{0.7\baselineskip}
+\justify
+Jetzt will ich zeigen, wieso die komplexen Zahlen in der Elektrotechnik so wichtig sind. Mit den bereits kennengelernten Tools, lassen sich zwar komplexere Schaltungen beschreiben und modellieren, nur wird es dann mathematisch sehr schnell hässlich und schwierig. Betrachten wir eine Schaltung, welche einen Widerstand, eine Spule und einen Kondensator beinhaltet:\\
+\justify
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/schaltung widerstand spule kondensator}}
+\hspace{2\baselineskip}
+\begin{minipage}{0.6\textwidth}
+\justify
+Hier haben wir eine RLC-Schaltung mit einer Gleichspannungsquelle. Mit der kirchhoffschen Maschengleichung können wir schreiben:
+\[U_0 - \textcolor{red!50!black}{R \cdot i} - \textcolor{green!50!black}{L\frac{di(t)}{dt}} - \textcolor{blue!50!black}{\frac{1}{C}\int i(t)\,dt} = 0\]
+Diese Gleichung bringt uns in der Form noch nicht viel. Sie muss vereinfacht werden, indem das Integral aufgelöst werden muss. Dafür differenzieren wir die Gleichung nach t und schreiben um:
+\[L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t) = 0\]
+Das ist eine homogene Differentialgleichung zweiter Ordnung und kann mit den Tools aus Mathe 3 gelöst werden.
+\vspace{1\baselineskip}
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+Jetzt nehmen wir die gleiche Schaltung, entfernen den Schalter und ersetzen die Gleichspannungsquelle mit einer Wechselspannung. Die Quelle kann mathematisch als $U_0 \,cos(\omega t)$ beschrieben werden. Nach Kirchhoff gilt:
+\[U_0\,cos(\omega t) - R \cdot i - L\frac{di(t)}{dt} - \frac{1}{C}\int i(t)\,dt = 0\]
+Differenzieren nach t:
+\[L\frac{d^2i(t)}{dt^2}+R\frac{di(t)}{dt}+\frac{1}{C}i(t) = \omega U_0\,sin(\omega t)\]
+Das ist eine inhomogene Differentialgleichung zweiter Ordnung und kann mit der Variation der Konstanten gelöst werden.
+\vspace{1\baselineskip}
+\end{minipage}
+\hspace{1\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/schaltung widerstand spule kondensator wechselspannung}}
+\justify
+Wie man sieht, ist dieser Ansatz mathematisch gesehen nicht sehr vielversprechend. Es wird schlimmer mit der Anzahl an Komponenten und der Größe der Schaltung. Auch bei Spannungsquellen, die nicht sinusartig sind wie beispielsweise eine Rechteck- oder eine Sägezahnschwingung. Diese müssten über eine Fourierreihe ausgedrückt werden, was die Gleichungen umso unschöner machen. Mit diesem Ansatz stößt man schnell auf einige Schwierigkeiten bei der Modellierung. Man macht sich deshalb Gebrauch der \textbf{komplexen Zahlen} und dem Konzept der komplexen \textbf{Impedanzen}.
+\end{mdframed}
+\vspace{0.8\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Komplexe Zahlen}}}\\
+\vspace{0.2\baselineskip}
+\justify
+Das Konzept der komplexen Zahlen ist aus Mathe 3 bekannt, deshalb belasse ich es hier bei einer knappen Formelsammlung. Die Elektrotechniker bezeichnen im Gegensatz zu den Mathematikern die komplexe Einheit als \textit{j}, da der Buchstabe i für den elektrischen Strom bereits vergeben ist.
+\[j^2 = -1 \hspace{1\baselineskip},\hspace{1\baselineskip} j = \sqrt{-1}\]
+\[\underline{z} = a + j \cdot b = r(cos\varphi + j \cdot sin\varphi) = re^{j\varphi} \hspace{1\baselineskip},\hspace{1\baselineskip} \underline{z}^* = a - j \cdot b\]
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/komplexe Zahlen Schaubild}}
+$\begin{aligned}[t]
+    Betrag&: r = |z| = \sqrt{a^2+b^2}\\
+    Phase&: \varphi = arctan(\frac{b}{a})
+\end{aligned}$
+\end{mdframed}
+\vspace{0.8\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Wechselspannung mit komplexen Zahlen}}}\\
+\vspace{0.2\baselineskip}
+\justify
+In der Elektrotechnik wird ein Konzept bei der Wechselstromlehre verwendet, welches erlaubt Kondensatoren und Spulen als `spezielle Arten' von Widerständen zu definieren. Dadurch kann man bei der Analyse alle Gleichstromgesetze von vorher auch für Wechselstromnetze verwenden, und das ganz ohne zeitabhängige Differentialgleichungen.\\ \\ 
+In einer Schaltung, mit einer sinusartigen Wechselstrom- oder Wechselspannungsquelle, sind alle Ströme und Spannungen innerhalb dieser Schaltung ebenfalls sinusartig.
+Es ist bekannt, dass komplexe Zahlen sinusartiges Verhalten im komplexen Raum aufweisen. Wir machen uns zu Nutze, dass mit komplexen Zahlen das Lösen trigonometrischer Aufgaben wesentlich einfacher ist. Es kann schnell verwirren, wieso ein `imaginärer' Teil von Nöten ist, es gibt schließlich tatsächlich keinen imaginären Strom oder keine imaginäre Spannung. Grund ist, dass durch diese Beschreibung der Mechanismus eingeführt wird, welcher die Phase berücksichtigt. \\ \\
+Nun kommt der entscheidende Schritt, bei dem die Spannungen und Ströme durch komplexe Zahlen beschrieben werden. Zu Beginn hieß es:
+\[u(t) = \hat{U} \cdot sin(\omega t + \varphi)\]
+Nun definieren wir:
+\[\underline{u}(t) = \hat{U} \cdot cos(\omega t + \varphi) + j \cdot \hat{U} \cdot sin(\omega t + \varphi)\]
+Offenbar gilt:
+\[u(t) = Im(\underline{u}(t))\]
+Das entspricht genau der Beobachtung von oben, dass der Momentanwert der Spannung durch die Projektion auf die y-Achse (also dem Imaginärteil) beobachtbar ist. Weiter gilt:
+\justify
+\centering
+\hspace{5\baselineskip}
+\begin{minipage}{0.4\textwidth}
+\begin{align*}
+    \underline{u}(t) &= \hat{U} \cdot cos(\omega t + \varphi) + j \cdot \hat{U} \cdot sin(\omega t + \varphi)\\
+    &= \hat{U} \cdot e^{j(\omega t + \varphi)}\\
+    &= \textcolor{blue}{\hat{U} \cdot e^{j\varphi}} \cdot e^{j\omega t}\\
+    &= \textcolor{blue}{\underline{\hat{U}}} \cdot e^{j\omega t}
+\end{align*}
+\end{minipage}
+\hspace{2\baselineskip}
+\begin{minipage}{0.3\textwidth}
+\raisebox{-0.5\height}{\input{circuiTiks/komplexe zahlen spannung}}
+\end{minipage}\\
+\vspace{0.5\baselineskip}
+\justify
+Die zeitunabhängigen Größen wurden im Faktor $\underline{\hat{U}}$ zusammengefasst, den wir \textit{komplexe Amplitude} nennen. Der Zeiger dieser komlexen Amplitute ist im Zeigerdiagramm wieder zu finden mit der Länge $\hat{U}$ und dem Winkel $\varphi$. Dieser Zeiger rotiert nun gegen den Uhrzeigersinn mit der Winkelfrequenz $\omega$.\\
+\centering
+\rule{0.5\textwidth}{0.5pt}\\
+\justify
+Jetzt, da wir den komplexen Ausdruck für die Spannung haben, können wir einen Widerstand, einen Kondensator oder eine Spule anschließen, und eine komplexe Gleichung für den Strom finden, der durch die Komponenten fließt. Es werden beide Größen Strom und Spannung im Zeigerdiagramm geplottet.\\ \\
+\vspace{0.5\baselineskip}
+\begin{tabular}{p{0.15\textwidth}p{0.75\textwidth}}
+     \textit{Widerstand}: & Strom und Spannung sind in Phase ($\varphi = 0^{\circ}$). Im Schaubild liegen daher die beiden Zeiger der Spannung und des Stroms aufeinander. \\
+     \textit{Kondensator}: & Der Strom eilt der Spannung um $\varphi = 90^{\circ}$ vor. Der Winkel wird in der Regel vom Spannungszeiger aus festgelegt. Merksatz: \textit{Im \textbf{Kondensator} eilt der \textbf{Strom vor}}.\\
+     \textit{Spule}: & Der Strom ist außer Phase mit der Spannung um $\varphi = -90^{\circ}$, d.h. der Strom geht der Spannung hinterher. Merksatz: \textit{In \textbf{Induktivitäten} tut sich der \textbf{Strom verspäten}}.
+\end{tabular}\\
+\centering
+\vspace{1\baselineskip}
+\raisebox{-0.5\height}{\input{circuiTiks/komplexer widerstand}}\\
+\raisebox{-0.5\height}{\input{circuiTiks/komplexer kondensator}}\\
+\raisebox{-0.5\height}{\input{circuiTiks/komplexe spule}}\\
+\justify
+\vspace{0.2\baselineskip}
+Jetzt kommt der entscheidende Trick, welcher die Wechselstromlehre so angenehm zu handhaben macht. Nehmen wir nun die Spannung an jeder Komponente und dividieren diese mit der Stromstärke, bekommen wir folgendes:
+\justify
+\centering
+\begin{tabular}{|p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.6\textwidth}|}
+    \hline
+    \raisebox{-3.2\height}{\input{circuiTiks/widerstand}} & \Large \[\underline{Z}_R = \frac{U}{I_R} = \frac{\underline{\hat{U}} e^{j\omega t}}{\frac{\underline{\hat{U}}}{R} \, e^{j\omega t}} = R\]\\\hline
+    \raisebox{-2.2\height}{\input{circuiTiks/kondensator}} & \Large \[\underline{Z}_C = \frac{U}{I_C} = \frac{\underline{\hat{U}} e^{j\omega t}}{j \omega C \cdot \underline{\hat{U}} e^{j\omega t}} = \frac{1}{j \omega C} = -j \frac{1}{\omega C}\]\\\hline
+    \raisebox{-2.8\height}{\input{circuiTiks/spule}} & \Large \[\underline{Z}_L = \frac{U}{I_L} = \frac{\underline{\hat{U}} e^{j\omega t}}{\frac{\underline{\hat{U}}}{j \omega L} \cdot e^{j \omega t}} = j \omega L\]\\\hline
+\end{tabular}\\
+\justify
+Wie man sieht, verschwindet der hässliche $\underline{\hat{U}} e^{j\omega t}$ Term und übrig bleiben die sogenannten komplexen \textbf{Impedanzen} der Komponenten. Das ist der Trick, der uns erlaubt die unangenehmen Differentialgleichungen zu umgehen. Jetzt können wir Kondensator sowie Spulen wie \textbf{frequenzabhängige Widerstände} innerhalb einer sinusartigen wechselspannungbetriebenen Schaltung behandeln. Solange alle Spannungen, Ströme sowie Widerstände in komplexer Form ausgedrückt werden, können wir die alten Gesetze wie dem Ohm'schen Gesetz oder der kirchhoffschen Gleichungen problemlos weiter verwenden. Die Impedanz ist also einfach nur eine allgemeine Art der Beschreibung von komplexen Widerständen und kann einfach nur resistiv, nur kapazitiv, nur induktiv oder eben eine Kombination von allen Dreien sein. Jetzt wollen wir die RLC-Schaltung von vorhin noch einmal mit den komplexen Impedanzen beschreiben:
+\justify
+\centering
+\raisebox{-0.2\height}{\input{circuiTiks/rlc kurz}}
+\hspace{1\baselineskip}
+$\underline{Z} = R + \underline{Z}_C + \underline{Z}_L = R - j\frac{1}{\omega C} + j\omega L = R + j(\omega L - \frac{1}{\omega C})$\\
+\justify
+Es ist direkt zu erkennen, dass dieser Ansatz um einiges einfacher ist als eine Differentialgleichung. Jetzt lässt sich ganz einfach frequenzabhängig der Strom berechnen. \\
+Auch die Regeln der Reihenschaltung oder Parallelschaltung (von Widerständen) ist übertragbar auf die Impedanzen, genauso der Spannungs- und Stromteiler.\\ \\ \\
+Zum festigen einige Beispielschaltungen und deren komplexen Impedanzen:
+\justify
+\centering
+\raisebox{-0.2\height}{\input{circuiTiks/kompl schalt 1}}
+\raisebox{-0.2\height}{\input{circuiTiks/kompl schalt 2}}
+\raisebox{-0.2\height}{\input{circuiTiks/kompl schalt 3}}
+\raisebox{-0.2\height}{\input{circuiTiks/kompl schalt 4}}\\
+\vspace{1.5\baselineskip}
+\rule{0.3\textwidth}{0.5pt}\\
+\justify
+\begin{minipage}{0.4\textwidth}
+Lösungen:
+\begin{enumerate}[label=(\alph*)]
+\item $\displaystyle \underline{Z}_a = R-j\frac{1}{\omega C}$
+\item $\displaystyle \underline{Z}_b = \frac{jR\omega L}{R + j\omega L}$
+\item $\displaystyle \underline{Z}_c = \frac{\frac{L}{C}-j(\frac{R}{\omega C})}{R + j(\omega L - \frac{1}{\omega C})}$
+\item $\displaystyle \underline{Z}_d = \frac{(R_1R_2 + \frac{L}{C}) + j(R_2 \omega L - \frac{R_1}{\omega C})}{(R_1 + R_2) + j(\omega L - \frac{1}{\omega C})}$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+Jetzt lassen sich die Ausdrücke natürlich noch in Real- und Imaginärteil auflösen. Könnt ihr selber gerne probieren.
+\end{minipage}\\
+\par\vspace{0.5\baselineskip}
+\centering
+\end{mdframed}
+
+\flushleft
+\section{Sonstiges}
+\vspace{-0.8\baselineskip}
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Wie ist das mit der Stromrichtung?}}}\\
+\vspace{0.2\baselineskip}
+\justify
+Vor langer Zeit (1750er) leistete Benjamin Franklin seine Pionierarbeit in der frühen Elektronik und führte erstmals die Konvention ein, den damals mysteriösen Dingen, die sich bewegten und Arbeit verrichteten, positive Ladungszeichen zuzuweisen. Nach Franklin bewegten sich im Leiter also positive Ladungsträger in der Richtung des heute universal verbreiteten konventionellen Stroms (von + nach -). 1897 entdeckte J.J. Thomson erstmals die unbekannten, negativ geladenen Partikel, die heute als Elektronen bekannt sind. Er steht mit seiner Aussage, dass negative Ladungsträger in entgegengesetzter Richtung fließen (von - nach +), der Franklins gegenüber. Mit der Zeit hat sich herausgestellt, dass Thomson recht hat und Franklin nicht. Die Konvention Franklins steht aber heute noch. Deshalb ist wichtig zu verstehen: \textbf{Wenn über die Stromstärke I und deren Richtung gesprochen wird, können wir einfach die Augen schließen und annehmen es bewegen sich positive Ladungen in der Leitung und den elektrischen Geräten und alles würde einwandfrei funktionieren. Negative Elektronen, die in eine Richtung gehen ist äquivalent zu positiver Ladung, die in die entgegengesetzte Richtung gehen. Man muss sich nur bewusst machen, dass die tatsächliche Bewegung negativer Elektronen, entgegengesetzt der Stromrichtung ist.}
+\justify
+\centering
+\raisebox{-0.5\height}{\input{circuiTiks/stromrichtung}}
+\raisebox{-0.5\height}{\includegraphics[scale=0.48]{grafiken/franklin comic.png}}
+\hspace{2\baselineskip}
+\end{mdframed}
+\vspace{1.4\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Filter und Übertragungsfunktionen}}}\\
+\vspace{0.2\baselineskip}
+\justify
+Durch spezielle Kombinationen von Widerständen, Kondensatoren und Spulen können Schaltungen entworfen werden, die in der Lage sind, bestimmte Frequenzen bzw. Signale durchzulassen, während andere abgewiesen werden. Im folgenden sind die einfachsten und wichtigsten Filter aufgelistet. Es wird auch mathematisch gezeigt, wieso es zu einem Durchlassen oder einer Sperre von bestimmten Frequenzen kommt. Wenn ein Filter gegeben ist und man nicht direkt erkennt, was für einer das sein soll, einfach die Übertragsfunktion $\frac{\underline{U}_A}{\underline{U}_E}$ aufstellen und die Funktion gegen 0 sowie $\infty$ laufen lassen. Dann sollte man sehr schnell erkennen, bei welchen Frequenzen der Filter sperrt und bei welchen er durchlässt.\\
+\justify
+\centering
+\begin{tabular}{ccc}
+     \raisebox{-0.5\height}{\input{circuiTiks/RC-tiefpass}} & \begin{minipage}{0.37\textwidth}$\displaystyle \underline{U}_E = (R + \frac{1}{j\omega C}) \cdot I \,\, , \,\, \underline{U}_A = \frac{1}{j\omega C} \cdot I \\ \frac{\underline{U}_A}{\underline{U}_E} = \frac{\frac{1}{j\omega C} \cdot I}{(R + \frac{1}{j\omega C}) \cdot I} = \frac{1}{1 + j\omega RC} \\ \lim_{\omega \to 0} \frac{1}{1 + j\omega RC} = 1 \,\, , \,\, \lim_{\omega \to \infty} \frac{1}{1 + j\omega RC} = 0$\end{minipage} & \multirow{2}{*}{\raisebox{-0.4\height}{\input{circuiTiks/RC-tiefpass kennlinie}}}\\
+     
+     \raisebox{-0.5\height}{\input{circuiTiks/RL-tiefpass}} & \begin{minipage}{0.37\textwidth}$\displaystyle \frac{\underline{U}_A}{\underline{U}_E} = \frac{R}{R + j\omega L} \\ \lim_{\omega \to 0} \frac{R}{R + j\omega L} = 1 \,\, , \,\, \lim_{\omega \to \infty} \frac{R}{R + j\omega L} = 0$\end{minipage} & \\ \hline
+     
+     \raisebox{-0.5\height}{\input{circuiTiks/RC-hochpass}} & \begin{minipage}{0.37\textwidth}$\displaystyle \frac{\underline{U}_A}{\underline{U}_E} = \frac{R}{R + \frac{1}{j\omega C}} = \frac{1}{1 + \frac{1}{j\omega RC}} \\ \lim_{\omega \to 0} \frac{1}{1 + \frac{1}{j\omega RC}} = 0 \,\, , \,\, \lim_{\omega \to \infty} \frac{1}{1 + \frac{1}{j\omega RC}} = 1$\end{minipage} & \multirow{2}{*}{\raisebox{-0.4\height}{\input{circuiTiks/RC-hochpass kennlinie}}}\\
+     
+     \raisebox{-0.5\height}{\input{circuiTiks/RL-hochpass}} & \begin{minipage}{0.37\textwidth}$\displaystyle \frac{\underline{U}_A}{\underline{U}_E} = \frac{j\omega L}{R + j\omega L} = \frac{1}{1 + \frac{R}{j\omega L}}\\ \lim_{\omega \to 0} \frac{1}{1 + \frac{R}{j\omega L}} = 0 \,\, , \,\, \lim_{\omega \to \infty} \frac{1}{1 + \frac{R}{j\omega L}} = 1$\end{minipage} & \\ \hline
+     
+     \raisebox{-0.5\height}{\input{circuiTiks/RLC-bandpass}} & \begin{minipage}{0.37\textwidth}$\displaystyle \frac{\underline{U}_A}{\underline{U}_E} = \frac{\frac{j\omega L \cdot \frac{1}{j\omega C}}{j\omega L + \frac{1}{j\omega C}}}{R + \frac{j\omega L \cdot \frac{1}{j\omega C}}{j\omega L + \frac{1}{j\omega C}}} = \frac{\frac{j\omega L}{1-\omega^2LC}}{R + \frac{j\omega L}{1-\omega^2 LC}}\\ = \frac{\frac{j\omega L}{1-\omega^2LC}}{\frac{R-\omega^2 RLC + j\omega L}{1-\omega^2LC}} = \frac{j \omega L}{R-\omega^2 RLC + j\omega L}\\ = \frac{1}{\frac{R-\omega^2 RLC}{j\omega L} + 1} \\ \lim_{\omega \to 0} \frac{1}{\frac{R-\omega^2 RLC}{j\omega L} + 1} = 0 \\ \lim_{\omega \to \infty} \frac{1}{\frac{R-\omega^2 RLC}{j\omega L} + 1} = 0 \\ \text{Durchlassbereich bei: } \frac{R-\omega^2RLC}{j\omega L} = 0 \\ \Leftrightarrow \omega_0 = \frac{1}{\sqrt{LC}}$\end{minipage} & \raisebox{-0.4\height}{\input{circuiTiks/RLC-bandpass kennlinie}}\\
+\end{tabular}
+\centering
+\justify
+Der Bandpass lässt sich auch durch eine Reihenschaltung von RLC bauen mit der Ausgangsspannung über dem Widerstand. Es gibt noch unzählige weitere Filter die hier nicht aufgezählt werden. Die Idee ist aber da.
+\end{mdframed}
+\vspace{0.8\baselineskip}
+
+\begin{mdframed}
+\centering
+\vspace{0.2\baselineskip}
+\centering{\fbox{\textbf{Begriffklärung Impedanz, Resistanz, Reaktanz}}}\\
+\vspace{0.2\baselineskip}
+\justify
+Der Begriff der Impedanz kann aufgeteilt werden in $Impedanz = Resistanz + Reaktanz$, wobei Resistanz den realen Teil der Impedanz ausmacht und die Reaktanz den imaginären Teil. Sie sind auch als $Scheinwiderstand = Wirkwiderstand + Blindwiderstand$ bekannt.
+\justify
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    $\underline{Z}$ & \makecell{Komplexer Widerstand\\Scheinwiderstand} & Impedanz \\\hline
+    $R$ & Wirkwiderstand & Resistanz \\\hline
+    $X$ & Blindwiderstand & Reaktanz \\\hline
+\end{tabular}
+\raisebox{-0.4\height}{\input{circuiTiks/komplexer widerstandszeiger}}\\
+\centering
+\justify
+Vorhin bei der Definion hätte ich die Impedanzen bzw. Reaktanzen des Kondensators und der Spule streng genommen besser aufschreiben können. Da die Widerstände von Kondensatoren oder Spulen rein imaginär sind, sind sie rein `blind' und man kann schreiben:\\
+\justify
+\centering
+\begin{tabular}{c}
+    \makecell{$\displaystyle X_C = \frac{1}{j\omega C}$} \\
+    \makecell{\\$\displaystyle X_L = j\omega L$}
+\end{tabular}
+\centering
+\justify
+Die Begrifflichkeit des `Blindwiderstandes' kommt daher, dass elektrische Energien in Kondensatoren und Spulen nicht in thermische, mechanische oder chemische Energien umgewandelt werden, im praktischen Sinne also nicht genutzt oder verbraucht werden, sondern dazu verwendet werden, ein elektrisches oder magnetisches Feld aufzubauen. Einer Strom- oder Spannungsquelle wird während dieser Zeit Energie entzogen, die aber bei Umkehren der Strom- oder Spannungsrichtung wieder zur Quelle zurückgeführt wird.
+\end{mdframed}
+
+\end{document}

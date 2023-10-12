@@ -1,0 +1,25 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=1, transform shape, voltage shift = 0.5]
+\large
+\draw [->, very thick] (0,-1.5) -- (0,1.5) node[above]{$U$};
+\draw [->, very thick] (-1,0) -- (8,0) node[right]{$t$};
+\draw[ultra thick] (-0.5,0) sin (0.5,1);
+\draw[ultra thick] (0.5,1) cos (1.5,0);
+\draw[ultra thick] (1.5,0) sin (2.5,-1);
+\draw[ultra thick] (2.5,-1) cos (3.5,0);
+\draw[ultra thick] (3.5,0)  sin (4.5,1);
+\draw[ultra thick] (4.5,1) cos (5.5,0);
+\draw[ultra thick] (5.5,0) sin (6.5,-1);
+\draw[ultra thick] (6.5,-1) cos (7.5,0);
+\draw[densely dashed] (-1,1) -- (1.5,1);
+\draw[Latex-Latex] (-0.9,0) -- (-0.9,1);
+\node[] at (-1.2,0.5) {$\hat{U}$};
+\draw[Latex-Latex] (0.5,1.2) -- (4.5,1.2);
+\node[] at (2.5,0.9) {$T$};
+\draw[densely dashed] (0.5,0.5) -- (0.5,1.5);
+\draw[densely dashed] (4.5,0.5) -- (4.5,1.5);
+\draw[densely dashed] (-0.5,0.5) -- (-0.5,-0.5);
+\draw[latex-latex] (-0.5,-0.2) -- (0,-0.2);
+\node[] at (-0.25,-0.5) {$\varphi_U$};
+\node[] at (3.5,-1.5) {\text{\footnotesize Zeitliche Darstellung einer Wechselspannung}};
+\end{circuitikz}

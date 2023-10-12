@@ -1,0 +1,9 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.6, transform shape, voltage shift = 0.5]
+\Large
+\fill [gray!15!white](-1,-0.5) rectangle (2.2,2.5);
+\draw (0,0) to[isource, i=$I_k$] (0,2) to[short,-*] (1.2,2) -- (2.7,2);
+\draw (1.2,2) to[R=$R_i$] (1.2,0);
+\draw (0,0) to[short,-*] (1.2,0) -- (2.7,0);
+\draw (2.7,2) to[R=$R_{Last}$, i>^=$I_{Last}$] (2.7,0);
+\end{circuitikz}

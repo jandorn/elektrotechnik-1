@@ -1,0 +1,10 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.6, transform shape, voltage shift = 0.5]
+\large
+\draw (0,2) to[short,-*] (1,2) to[short,-*] (2,2) -- (3,2) to[C,name=C3] (3,0) to[short,-*] (2,0) to[short,-*] (1,0) -- (0,0);
+\draw (1,2) to[C,name=C1] (1,0);
+\draw (2,2) to[C,name=C2] (2,0);
+\node[above, yshift=3pt] at (C1.n) {$C_1$};
+\node[above, yshift=3pt] at (C2.n) {$C_2$};
+\node[above, yshift=3pt] at (C3.n) {$C_3$};
+\end{circuitikz}

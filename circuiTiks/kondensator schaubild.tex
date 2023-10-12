@@ -1,0 +1,23 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1.2pt, scale=0.7, transform shape, voltage shift = 0.5]
+\large
+\draw (0,0) to[vsource, v<=$U_0$] (0,3) -- (4,3) -- (4,2.5);
+\draw (0,0) -- (4,0) -- (4,0.5);
+\draw [black] (2.5,2.1) rectangle (5.5,2.5);
+\draw [black] (2.5,0.5) rectangle (5.5,0.9);
+\node [] at (3,2.3) {$+$};
+\node [] at (3.5,2.3) {$+$};
+\node [] at (4,2.3) {$+$};
+\node [] at (4.5,2.3) {$+$};
+\node [] at (5,2.3) {$+$};
+\node [] at (3,0.7) {$-$};
+\node [] at (3.5,0.7) {$-$};
+\node [] at (4,0.7) {$-$};
+\node [] at (4.5,0.7) {$-$};
+\node [] at (5,0.7) {$-$};
+\draw [->](3,2) -- (3,1);
+\draw [->](3.5,2) -- (3.5,1);
+\draw [->](4,2) -- (4,1);
+\draw [->](4.5,2) -- (4.5,1);
+\draw [->](5,2) -- (5,1);
+\end{circuitikz}

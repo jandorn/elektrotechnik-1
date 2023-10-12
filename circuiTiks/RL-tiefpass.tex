@@ -1,0 +1,10 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.7, transform shape, voltage shift = 0.5]
+\large
+\draw (0,2) to[short,o-] (0.5,2) to[L,l=$L$] (3,2) to[short,-o] (5,2);
+\draw (3,2) to[short,*-] (3,1.8) to[R,l=$R$] (3,0.2) to[short,-*] (3,0);
+\draw (0,0) to[short,o-] (2.5,0) to[short,-o] (5,0);
+\draw (0,2) to[open,v=$U_E$] (0,0);
+\draw (5,2) to[open,v=$U_A$] (5,0);
+\node[] at (2.5,-1) {\text{\textbf{RL - Tiefpass}}};
+\end{circuitikz}

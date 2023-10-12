@@ -1,0 +1,11 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1.4pt, scale=1.2, transform shape, voltage shift = 0.5]
+\large
+\draw (0,1) -- (1,1);
+\draw (1,0.5) -- (1,1.5);
+\draw [black, pattern=crosshatch dots, pattern color=black](1.1,0.5) rectangle (1.4,1.5);
+\draw (1.5,0.5) -- (1.5,1.5);
+\draw (1.5,1) -- (2.5,1);
+\draw [<-, very thick] (1.35,1.6) -- (1.9,1.7); 
+\node [] at (2.8,1.7) {\scriptsize Dielektrikum};
+\end{circuitikz}

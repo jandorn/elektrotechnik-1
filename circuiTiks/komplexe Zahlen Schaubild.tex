@@ -1,0 +1,14 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=1, transform shape, voltage shift = 0.5]
+\draw[-Latex, very thick] (0,-0.3) -- (0,1.5) node[above]{\small $Im(\underline{z})$};
+\draw[-Latex, very thick] (-0.3,0) -- (1.5,0) node[right]{\small $Re(\underline{z})$};
+\draw (0,0) -- (1,1);
+\draw[densely dashed] (0,1) -- (1,1);
+\draw[densely dashed] (1,0) -- (1,1);
+\node[] at (1,-0.2) {a};
+\node[] at (-0.2,1) {b};
+\node[] at (1.1,1.1) {z};
+\node[] at (0.4,0.7) {|z|};
+\draw[-latex] (0.5,0) arc (0:45:0.5);
+\node[] at (0.3,0.1) {\scriptsize $\varphi$};
+\end{circuitikz}

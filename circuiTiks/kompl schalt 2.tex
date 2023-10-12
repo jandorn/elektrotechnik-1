@@ -1,0 +1,7 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=0.7, transform shape, voltage shift = 0.5]
+\large
+\draw (0,0) to[short,-*] (0.5,0) -- (0.5,0.5) to[L,l=$L$] (2.5,0.5) to[short,-*] (2.5,0) -- (3,0);
+\draw (0.5,0) -- (0.5,-0.5) to[R,l=$R$] (2.5,-0.5) -- (2.5,0);
+\node[] at (-0.5,0) {\Large \text{\textbf{b.}}};
+\end{circuitikz}

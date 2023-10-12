@@ -1,0 +1,25 @@
+\ctikzset{bipoles/thickness=1}
+\begin{circuitikz}[line width=1pt, scale=1, transform shape, voltage shift = 0.5]
+\large
+\draw [->, very thick] (0,-1.7) -- (0,2) node[above]{$U_L$};
+\draw [->, very thick] (0,0) -- (8,0) node[right]{$t$};
+\node [] at (-0.5,1.7) {\small $U_0$};
+\draw [densely dashed] (5,1.7) -- (5,-4.7);
+\draw [densely dashed] (2.5,1.7) -- (2.5,-4.7);
+\draw (-0.1,1.7) -- (0.1,1.7);
+\draw [blue] (0,1.7) .. controls (0.5,0.7) and (0.9,0.05) .. (2.5,0);
+\draw [blue] (2.5,0) -- (5,0);
+\draw [blue] (5,-1.7) .. controls (5.4,-0.7) and (5.7,-0.05) .. (7.5,0);
+\node [] at (1.3,-1.7) {\text{Laden}};
+\node [] at (6.3,-1.7) {\text{Entladen}};
+\draw [->, very thick] (0,-4.7) -- (0,-2.7) node[above]{$I$};
+\draw [->, very thick] (0,-4.7) -- (8,-4.7) node[right]{$t$};
+\draw [green!60!black] (0,-4.7) .. controls (0.5,-3.7) and (0.9,-3.05) .. (2.5,-3);
+\draw [green!60!black] (5,-3) .. controls (5.4,-4) and (5.7,-4.65) .. (7.5,-4.7);
+\draw [green!60!black] (2.5,-3) -- (5,-3);
+
+\node [blue] at (1.6,-5.4) {$U_L(t) = U_0 \cdot e^{-\frac{R_1}{L}\cdot t}$};
+\node [green!40!black] at (1.9,-6.4) {$I(t) = I_0 \cdot (1-e^{-\frac{R_1}{L} \cdot t})$};
+\node [blue] at (6.8,-5.4) {$U_L(t) = -U_0 \cdot e^{-\frac{R_2}{L}\cdot t}$};
+\node [green!40!black] at (6.4,-6.4) {$I(t) = I_0 \cdot e^{-\frac{R_2}{L}\cdot t}$};
+\end{circuitikz}
